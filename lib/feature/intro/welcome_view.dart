@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:se7ety/core/enums/user_type.dart';
+import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
+import 'package:se7ety/feature/auth/presentation/views/register_view.dart';
 
 class WelcomeView extends StatefulWidget {
   const WelcomeView({super.key});
@@ -71,11 +74,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => const LoginView(index: 0),
-                          //     ));
+                          push(context, const RegisterView(userType: UserType.doctor,));
                         },
                         child: Container(
                             height: 70,
@@ -91,7 +90,9 @@ class _WelcomeViewState extends State<WelcomeView> {
                       ),
                       const Gap(15),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          push(context, const RegisterView(userType: UserType.patient,));
+                        },
                         child: Container(
                           height: 70,
                           decoration: BoxDecoration(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:se7ety/core/functions/navigation.dart';
+import 'package:se7ety/core/services/local_storage/local_storage.dart';
 import 'package:se7ety/feature/intro/onbording/onboarding_view.dart';
+import 'package:se7ety/feature/intro/welcome_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -13,7 +15,13 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      pushReplacement(context, const OnboardingView());
+      bool isOnboardingShow =
+          AppLocalStorage.getCachedData(key: AppLocalStorage.onboarding)??false;
+      if (isOnboardingShow) {
+        pushReplacement(context, const WelcomeView());
+      } else {
+        pushReplacement(context, const OnboardingView());
+      }
     });
     super.initState();
   }
