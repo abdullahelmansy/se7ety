@@ -4,12 +4,15 @@ import 'package:gap/gap.dart';
 import 'package:se7ety/core/enums/user_type.dart';
 import 'package:se7ety/core/functions/dialog.dart';
 import 'package:se7ety/core/functions/email_vaildation.dart';
+import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/core/widgets/custom_button.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_event.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_state.dart';
+import 'package:se7ety/feature/auth/presentation/views/doctor_details_view.dart';
+import 'package:se7ety/feature/auth/presentation/views/login_view.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key, required this.userType});
@@ -34,8 +37,13 @@ class _RegisterViewState extends State<RegisterView> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is RegisterSuccessState) {
-          Navigator.pop(context);
+          if(widget.userType==UserType.doctor){
+            pushAndRemoveUntil(context,  const DoctorDetailsView());
+          }
+          else{}
+          // Navigator.pop(context);
         } else if (state is AuthErrorState) {
+          Navigator.pop(context);
           showErrorDialog(context, state.error);
         } else if (state is RegisterLoadingState) {
           showLoadingDialog(context);
@@ -159,7 +167,10 @@ class _RegisterViewState extends State<RegisterView> {
                             style: getbodyStyle(color: AppColors.black),
                           ),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                 pushReplacement(context,
+                                    LoginView(userType: widget.userType));
+                              },
                               child: Text(
                                 'سجل دخول',
                                 style: getbodyStyle(color: AppColors.color1),

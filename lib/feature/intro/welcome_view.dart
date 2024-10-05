@@ -4,7 +4,7 @@ import 'package:se7ety/core/enums/user_type.dart';
 import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
-import 'package:se7ety/feature/auth/presentation/views/register_view.dart';
+import 'package:se7ety/feature/auth/presentation/views/login_view.dart';
 
 class WelcomeView extends StatefulWidget {
   const WelcomeView({super.key});
@@ -74,7 +74,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          push(context, const RegisterView(userType: UserType.doctor,));
+                          push(context, const LoginView(userType: UserType.doctor,));
                         },
                         child: Container(
                             height: 70,
@@ -91,7 +91,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                       const Gap(15),
                       GestureDetector(
                         onTap: () {
-                          push(context, const RegisterView(userType: UserType.patient,));
+                          push(context, const LoginView(userType: UserType.patient,));
                         },
                         child: Container(
                           height: 70,

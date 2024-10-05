@@ -10,6 +10,10 @@ class LoginSuccessState extends AuthState {}
 class RegisterLoadingState extends AuthState {}
 
 class RegisterSuccessState extends AuthState {}
+//doctor details
+class DoctorDetailsLoadingState extends AuthState {}
+
+class DoctorDetailsSuccessState extends AuthState {}
 
 //error
 class AuthErrorState extends AuthState {
