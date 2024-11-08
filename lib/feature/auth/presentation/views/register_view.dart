@@ -37,16 +37,16 @@ class _RegisterViewState extends State<RegisterView> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is RegisterSuccessState) {
-          if(widget.userType==UserType.doctor){
-            pushAndRemoveUntil(context,  const DoctorDetailsView());
-          }
-          else{}
+          if (widget.userType == UserType.doctor) {
+            pushAndRemoveUntil(context, const DoctorDetailsView());
+          } else {}
           // Navigator.pop(context);
         } else if (state is AuthErrorState) {
           Navigator.pop(context);
           showErrorDialog(context, state.error);
         } else if (state is RegisterLoadingState) {
           showLoadingDialog(context);
+          Navigator.pop(context);
         }
       },
       child: Scaffold(
@@ -168,7 +168,7 @@ class _RegisterViewState extends State<RegisterView> {
                           ),
                           TextButton(
                               onPressed: () {
-                                 pushReplacement(context,
+                                pushReplacement(context,
                                     LoginView(userType: widget.userType));
                               },
                               child: Text(

@@ -12,6 +12,7 @@ import 'package:se7ety/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_event.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_state.dart';
 import 'package:se7ety/feature/auth/presentation/views/register_view.dart';
+import 'package:se7ety/feature/patient/home/presentation/widgets/patient_nav_bar_widget.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key, required this.userType});
@@ -36,6 +37,7 @@ class _LoginViewState extends State<LoginView> {
       listener: (context, state) {
         if (state is LoginSuccessState) {
           Navigator.pop(context);
+          pushAndRemoveUntil(context, const PatientNavBarWidget());
         } else if (state is AuthErrorState) {
           Navigator.pop(context);
           showErrorDialog(context, state.error);
