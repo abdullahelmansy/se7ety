@@ -3,7 +3,7 @@ import 'package:se7ety/core/enums/user_type.dart';
 import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
-import 'package:se7ety/feature/auth/presentation/screen/register_screen.dart';
+import 'package:se7ety/feature/auth/presentation/screen/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -70,7 +70,7 @@ class WelcomeScreen extends StatelessWidget {
                           onTap: () {
                             push(
                                 context,
-                                const RegisterScreen(
+                                const LoginView(
                                   userType: UserType.doctor,
                                 ));
                           },
@@ -95,7 +95,7 @@ class WelcomeScreen extends StatelessWidget {
                           onTap: () {
                             push(
                                 context,
-                                const RegisterScreen(
+                                const LoginView(
                                   userType: UserType.patient,
                                 ));
                           },

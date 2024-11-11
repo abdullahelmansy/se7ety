@@ -4,10 +4,13 @@ import 'package:gap/gap.dart';
 import 'package:se7ety/core/enums/user_type.dart';
 import 'package:se7ety/core/functions/dialog.dart';
 import 'package:se7ety/core/functions/email_vaildation.dart';
+import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/core/widgets/custom_button.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_bloc.dart';
+import 'package:se7ety/feature/auth/presentation/screen/register_screen.dart';
+import 'package:se7ety/feature/patient/patient_nav_bar_widget.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key, required this.userType});
@@ -33,7 +36,7 @@ class _LoginViewState extends State<LoginView> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is LoginSuccessState) {
-          // pushAndRemoveUntil(context, const PatientNavBarWidget());
+          pushAndRemoveUntil(context, const PatientNavBarWidget());
         } else if (state is AuthErrorState) {
           Navigator.pop(context);
           showErrorDialog(context, state.error);
@@ -138,8 +141,8 @@ class _LoginViewState extends State<LoginView> {
                           ),
                           TextButton(
                               onPressed: () {
-                                // pushReplacement(context,
-                                //     RegisterView(userType: widget.userType));
+                                pushReplacement(context,
+                                    RegisterScreen(userType: widget.userType));
                               },
                               child: Text(
                                 'سجل الان',
