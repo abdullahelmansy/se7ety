@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
+import 'package:se7ety/feature/patient/appointment/appointment_screen.dart';
 import 'package:se7ety/feature/patient/home/presentation/pages/patient_home_screen.dart';
+import 'package:se7ety/feature/patient/profile/page/profile_screen.dart';
 import 'package:se7ety/feature/patient/search/page/search_screen.dart';
 
 class PatientNavBarWidget extends StatefulWidget {
@@ -17,8 +19,8 @@ class _PatientNavBarWidgetState extends State<PatientNavBarWidget> {
   List<Widget> pages = [
     const PatientHomeScreen(),
     const SeacrhScreen(),
-    const PatientHomeScreen(),
-    const PatientHomeScreen(),
+    const AppointmentScreen(),
+    const PatientProfile(),
   ];
   @override
   Widget build(BuildContext context) {

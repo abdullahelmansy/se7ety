@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/core/widgets/custom_button.dart';
 import 'package:se7ety/feature/auth/data/doctor_model.dart';
+import 'package:se7ety/feature/patient/booking/presentation/booking_screen.dart';
 import 'package:se7ety/feature/patient/search/widget/item_tile.dart';
 import 'package:se7ety/feature/patient/search/widget/phone_tile.dart';
 
@@ -214,11 +216,11 @@ class _DoctorProfileState extends State<DoctorProfile> {
         child: CustomButton(
           text: 'احجز موعد الان',
           onPressed: () {
-            // push(
-            //     context,
-            //     BookingView(
-            //       doctor: widget.doctorModel!,
-            //     ));
+            push(
+                context,
+                BookingView(
+                  doctor: widget.doctorModel!,
+                ));
           },
         ),
       ),
